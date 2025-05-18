@@ -1,19 +1,24 @@
 table {
-  max-width: 50rem;
+  border-collapse: collapse; /* no spacing between cells */
+  width: 50%;
+  max-width: 100rem;
   margin: 2rem auto;
-  padding: 1rem;
   table-layout: fixed;
-  border-spacing: 1rem;
-  text-align: right;
-}
-
-table thead {
-  font-size: 0.7rem;
-  color: #83e6c0;
-}
-
-table tbody {
+  text-align: center;
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 0.85rem;
-  color: #c2e9e0;
+}
+
+th, td {
+  border: 1px solid black; /* uniform borders like Excel */
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+thead {
+  background: linear-gradient(180deg, #307e6c, #2b996d);
+  color: #000503;
+}
+
+tbody {
+  color: #01221b;
 }

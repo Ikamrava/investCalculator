@@ -1,22 +1,23 @@
-<p>Calculate by puting some values </p>
+
 <table>
     <thead>
         <tr>
             <th>Year</th>
             <th>Investment Value</th>
-            <th>Interest(Year)</th>
+            <th>Interest (Year)</th>
             <th>Total Interest</th>
             <th>Invested Capital</th>
         </tr>
     </thead>
     <tbody>
-        @for (item of results; track $index) {
+
+        @for (item of results(); track $index) {
             <tr>
-                <td>{{ item.year }}</td>
-                <td>{{ item.annualInvestment }}</td>
-                <td>{{ item.interest  }}</td>
-                <td>{{ item.totalInterest  }}</td>
-                <td>{{ item.totalAmountInvested  }}</td>
+                <td>{{ item.year  }}</td>
+                <td>{{ item.annualInvestment | currency:"GBP" }}</td>
+                <td>{{ item.interest | currency:"GBP"  }}</td>
+                <td>{{ item.totalInterest | currency:"GBP"  }}</td>
+                <td>{{ item.totalAmountInvested  | currency:"GBP" }}</td>
             </tr>
         }
         

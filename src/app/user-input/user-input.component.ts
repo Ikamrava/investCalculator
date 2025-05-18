@@ -1,7 +1,8 @@
-import { Component, output } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { userInput } from '../../model';
-import { InvokeFunctionExpr } from '@angular/compiler';
+import { UserInput } from '../../model';
+import { InvestService } from '../invest.service';
+
 
 
 @Component({
@@ -12,18 +13,19 @@ import { InvokeFunctionExpr } from '@angular/compiler';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  calculate = output<userInput>()
-  initialInvestment = "0"
-  annualInvestment = "0"
-  expectedReturn = "5"
-  duration = "0"
+  initialInvestment = signal("2000") 
+  annualInvestment = signal("500")
+  expectedReturn = signal("5") 
+  duration = signal("10")
+
+  constructor(private investmentSerice:InvestService){}
 
   onSubmit(){
-    this.calculate.emit({
-      initialInvestment:+this.initialInvestment,
-      annualInvestment:+this.annualInvestment,
-      expectedReturn:+this.expectedReturn,
-      duration: +this.duration
+    this.investmentSerice.calculateInvestmentResults({
+      initialInvestment:+this.initialInvestment(),
+      annualInvestment:+this.annualInvestment(),
+      expectedReturn:+this.expectedReturn(),
+      duration: +this.duration()
     })
   }
 }
